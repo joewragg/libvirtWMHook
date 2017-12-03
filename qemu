@@ -1,0 +1,33 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
+import distutils.util
+import os.path
+import subprocess
+import sys
+import logging
+import time
+
+def main():
+	logger = logging.getLogger()
+	logger.setLevel(logging.DEBUG)
+	fh = logging.FileHandler('/tmp/partpass.log')
+	fh.setLevel(logging.DEBUG)
+	logger.addHandler(fh)
+	if sys.argv[2:4] == ["prepare", "begin"]: # prepare begin -"
+		logger.debug("start")
+		subprocess.run("/etc/libvirt/hooks/start", shell="true")
+		time.sleep(3)
+		logger.debug("start complete")			
+	elif sys.argv[2:4] == ["started", "begin"]: #  started begin -"
+		pass
+	elif sys.argv[2:4] == ["release", "end"]: # release end -"
+		logger.debug("end")
+		subprocess.run("/etc/libvirt/hooks/end", shell="true")
+		logger.debug("end complete")
+	else:
+		logger.debug("Else ran")
+		#subprocess.run(["gedit"])
+
+if __name__ == "__main__":
+	main()

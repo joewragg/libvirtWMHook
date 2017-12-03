@@ -1,0 +1,5 @@
+#!/bin/bash
+DISPLAY=:0 xrandr --output DP-1 --auto --pos 0x0 --output HDMI-3 --auto --pos 2560x340 
+DISPLAY=:0 xrandr --output DP-1 --primary 
+killall synergyc
+synergyc 192.168.122.149

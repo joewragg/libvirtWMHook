@@ -1,0 +1,6 @@
+#!/bin/bash
+su -l joe -c "/home/joe/scripts/libvirtWMHook/monitorsEnd"
+su -l joe -c "synergyc 192.168.122.149"
+systemctl stop ckb-daemon.service
+kill -9 steam
+gsettings set org.gnome.desktop.background picture-uri file:///home/joe/Pictures/SanFran/Right.jpg

@@ -1,0 +1,5 @@
+#!/bin/bash
+su -l joe -c "/home/joe/scripts/libvirtWMHook/monitorsStart"
+systemctl start ckb-daemon.service
+killall synergyc
+gsettings set org.gnome.desktop.background picture-uri file:///home/joe/Pictures/SanFran/Join.jpg
